@@ -35,9 +35,7 @@ def read_from_file():
 
 @app.route('/write_to_file', methods = ['POST'])
 def write_to_file():
-  line = request.form.get('data')
-  write_file(line)
-  return f"Add line '{line}' to file."
+  
 
 
 if __name__ == '__main__':
