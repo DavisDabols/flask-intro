@@ -35,7 +35,13 @@ def read_from_file():
 
 @app.route('/write_to_file', methods = ['POST'])
 def write_to_file():
-  
+  request_type = request.content_type
+  if request_type == 'application/json':
+    contentJSON = request.get_json()
+    write_file(contentJSON['data'])
+    return f"Line {contentJSON['data']} added to file"
+  else:
+    return f"Request {request_type} is not supported"
 
 
 if __name__ == '__main__':
